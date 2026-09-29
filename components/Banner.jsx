@@ -1,7 +1,10 @@
 import React from 'react'
-import bannerImage from '../Public/images/recipe-banner.jpg'
+import bannerImage from '../Public/images/recipe-banner.jpg';
+import {useNavigate} from 'react-router';
+
 
 const Banner = () => {
+  const navigate = useNavigate();
   return (
 <section className="relative mx-auto mt-6 max-w-[1500px] overflow-hidden rounded-3xl shadow-md">
   {/* Banner Image */}
@@ -25,7 +28,7 @@ const Banner = () => {
         Explore delicious recipes, discover new flavors, and find your next
         favorite dish from talented chefs.
       </p>
-      <button
+      <button onClick={() => navigate("/recipes")}
         className="mt-6 rounded-full bg-white px-6 py-3 text-sm font-semibold
         text-gray-900 shadow-lg transition duration-300
         hover:-translate-y-0.5 hover:bg-orange-500 hover:text-white"
