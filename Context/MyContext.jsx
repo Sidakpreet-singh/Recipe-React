@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { createContext } from "react";
 import { useRef } from "react";
 
@@ -6,7 +6,8 @@ export const MyStore = createContext();
 
 export const ContextProvider =({children})=>{
 
-    const [recipes,setRecipes] = useState([
+    useEffect(()=>{
+     localStorage.setItem("recipes", JSON.stringify([
   {
     id: 1,
     RecipeName: "Butter Chicken",
@@ -223,7 +224,10 @@ export const ContextProvider =({children})=>{
       "https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=800&q=80",
     quantity: 1,
   },
-]);
+]));
+    },[]);
+
+    const [recipes,setRecipes] = useState(JSON.parse(localStorage.getItem('recipes')) || []);
 const [cartitems,setCartitems] = useState(JSON.parse(localStorage.getItem('cartitems'))||[]);
     const [showForm, setShowForm] = useState(false);
      const formRef = useRef(null);
